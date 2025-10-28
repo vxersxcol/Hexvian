@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HexvianShop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <header>
+    <h1 class="logo">✨ HexvianShop ✨</h1>
+    <p class="subtitle">UI • GFX • Scripting • Gamepasses</p>
+  </header>
+
+  <nav>
+    <a href="#ui">UI & GFX</a>
+    <a href="#scripts">Scripting</a>
+    <a href="#games">Gamepasses</a>
+    <a href="https://discord.gg/XtQPKwu5az" target="_blank">Discord</a>
+  </nav>
+
+  <section id="ui" class="shop">
+    <h2>🎨 UI & GFX</h2>
+    <div class="item">
+      <img src="https://tr.rbxcdn.com/6e1d27c4a2c29d9d0f8797d13efdb4e5/420/420/Image/Png" alt="UI Pack" />
+      <h3>Custom UI Pack</h3>
+      <p>Coming Soon...</p>
+    </div>
+    <div class="item">
+      <img src="https://tr.rbxcdn.com/b62d7b03f179df5454d9a6a987cfb6ce/420/420/Image/Png" alt="GFX" />
+      <h3>Thumbnail & GFX</h3>
+      <p>Coming Soon...</p>
+    </div>
+  </section>
+
+  <section id="scripts" class="shop">
+    <h2>💻 Scripting & Dev</h2>
+    <div class="item">
+      <img src="https://tr.rbxcdn.com/9c4e82054355ef09c3b0f598c2e9e0b5/420/420/Image/Png" alt="Scripting" />
+      <h3>Full Game Scripting</h3>
+      <p>Coming Soon...</p>
+    </div>
+  </section>
+
+  <section id="games" class="shop">
+    <h2>🎮 Gamepasses & Items</h2>
+    <div class="item"><h3>Grow a Garden</h3><p>Coming Soon...</p></div>
+    <div class="item"><h3>Plants vs Brainrots</h3><p>Coming Soon...</p></div>
+    <div class="item"><h3>99 Nights in the Forest</h3><p>Coming Soon...</p></div>
+    <div class="item"><h3>Steal a Brainrot</h3><p>Coming Soon...</p></div>
+  </section>
+
+  <footer>
+    <p>© 2025 HexvianShop — Powered by Hexvian Works</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
