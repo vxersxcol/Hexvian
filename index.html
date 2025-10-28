@@ -1,47 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HexvianShop</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovxScripts</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Intro Screen -->
-  <div id="intro">
-    <h1 class="intro-text">HexvianShop</h1>
+  <div id="loading">
+    <div class="loader-text">Loading<span class="dots">...</span></div>
   </div>
 
-  <!-- Main Content -->
-  <div id="content" class="hidden">
-    <div class="logo-container">
-      <img src="logo.png" alt="HexvianShop Logo" class="main-logo">
-      <h2 class="neon-footer">HexvianShop</h2>
-    </div>
+  <div id="app" class="hidden">
+    <header>
+      <img src="Logo.png" alt="Logo" class="logo" />
+      <h1 class="neon-text">NovxScripts</h1>
+      <button id="themeToggle">🌓</button>
+    </header>
 
-    <div class="button-group">
-      <a href="ui.html" class="glow-button">UI</a>
-      <a href="gfx.html" class="glow-button">GFX</a>
-      <a href="scripting.html" class="glow-button">Scripting</a>
-      <a href="gamepass.html" class="glow-button">Gamepass</a>
-      <a href="items.html" class="glow-button">Items</a>
-    </div>
+    <main>
+      <h2 class="typewriter">Welcome to NovxScripts</h2>
+      <p>Your modern Roblox script hub with neon themes and tools!</p>
 
-    <a href="https://discord.gg/XtQPKwu5az" target="_blank" class="discord-button">Join Discord</a>
+      <div class="controls">
+        <button onclick="window.location.href='settings.html'">⚙️ Settings</button>
+        <button onclick="window.location.href='payment.html'">💳 Payment</button>
+      </div>
+    </main>
 
-    <button id="settings-btn" class="settings-btn">⚙️</button>
-    <div id="settings-menu" class="settings-menu hidden">
-      <label>Theme:</label>
-      <select id="theme-select">
-        <option value="cyan">Neon Cyan + Yellow</option>
-        <option value="purple">Purple + Blue</option>
-        <option value="pink">Pink + Teal</option>
-      </select>
-      <label><input type="checkbox" id="multi-theme" checked> Multi Theme</label>
-    </div>
+    <footer>
+      <p id="funFact" class="neon-fact">
+        Fun Fact: Did you know the old website name was Hexvian Shop before the remake? The PNG still exists 😄
+      </p>
+    </footer>
+
+    <audio id="bgMusic" src="bg-music.mp3" loop></audio>
   </div>
 
-  <canvas id="particles"></canvas>
+  <script src="script.js"></script>
 </body>
 </html>
