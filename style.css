@@ -1,102 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  background: radial-gradient(circle at center, #050505, #000);
-  color: white;
   font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  background: black;
+  color: white;
   text-align: center;
-  overflow-x: hidden;
 }
 
-canvas#particles {
+.hidden {
+  display: none;
+}
+
+#intro {
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-header {
-  padding: 70px 20px 30px;
-}
-
-.logo {
+.intro-text {
   font-size: 3em;
   color: cyan;
-  text-shadow: 0 0 15px cyan, 0 0 30px yellow;
-  animation: glowPulse 2.5s infinite alternate;
+  text-shadow: 0 0 10px cyan, 0 0 30px yellow;
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
 }
 
-@keyframes glowPulse {
-  from { text-shadow: 0 0 10px cyan, 0 0 20px yellow; }
-  to { text-shadow: 0 0 25px yellow, 0 0 50px cyan; }
+@keyframes fadeIn {
+  0% { opacity: 0; filter: blur(5px); }
+  100% { opacity: 1; filter: blur(0); }
 }
 
-.subtitle {
-  color: #ccc;
+.logo-container {
+  margin-top: 8vh;
+}
+
+.main-logo {
+  width: 300px;
+  animation: glow 2s infinite alternate;
+}
+
+.neon-footer {
   margin-top: 10px;
+  font-size: 1.2em;
+  text-shadow: 0 0 10px cyan, 0 0 20px yellow;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  background: rgba(255,255,255,0.05);
-  padding: 10px 20px;
-}
-
-nav a {
-  color: yellow;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: cyan;
-  text-shadow: 0 0 10px cyan;
-}
-
-.shop {
-  padding: 50px 20px;
-}
-
-.shop h2 {
-  color: cyan;
-  text-shadow: 0 0 15px cyan;
-  margin-bottom: 30px;
-}
-
-.item {
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  padding: 20px;
-  margin: 15px;
+.glow-button, .discord-button, .return-home {
   display: inline-block;
-  width: 250px;
-  box-shadow: 0 0 15px #00ffff33;
+  margin: 10px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.1em;
+  color: black;
+  background: linear-gradient(90deg, cyan, yellow);
+  box-shadow: 0 0 20px cyan;
   transition: 0.3s;
 }
 
-.item:hover {
+.glow-button:hover, .discord-button:hover, .return-home:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 30px yellow;
+  box-shadow: 0 0 40px yellow;
 }
 
-.item img {
-  width: 100%;
+.discord-button {
+  display: block;
+  margin: 20px auto;
+  width: fit-content;
+  background: linear-gradient(90deg, #7289da, cyan);
+  color: white;
+}
+
+.settings-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: transparent;
+  color: white;
+  font-size: 1.5em;
+  border: none;
+  cursor: pointer;
+  text-shadow: 0 0 10px cyan;
+  transition: 0.2s;
+}
+
+.settings-btn:hover {
+  transform: rotate(90deg);
+}
+
+.settings-menu {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  background: rgba(20, 20, 20, 0.9);
+  padding: 15px;
   border-radius: 10px;
+  border: 1px solid cyan;
+  text-align: left;
+  width: 200px;
+  box-shadow: 0 0 15px cyan;
 }
 
-footer {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  color: #aaa;
-  margin-top: 40px;
+@keyframes glow {
+  from { filter: drop-shadow(0 0 10px cyan); }
+  to { filter: drop-shadow(0 0 20px yellow); }
+}
+
+#particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
 }
