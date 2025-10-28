@@ -1,82 +1,69 @@
-window.addEventListener('load', () => {
-  const intro = document.getElementById('intro');
-  const content = document.getElementById('content');
+document.addEventListener("DOMContentLoaded", () => {
+  const app = document.getElementById("app");
+  const loading = document.getElementById("loading");
+  const themeToggle = document.getElementById("themeToggle");
+  const musicEnabled = document.getElementById("musicEnabled");
+  const volumeControl = document.getElementById("volumeControl");
+  const oldTheme = document.getElementById("oldTheme");
+  const bgMusic = document.getElementById("bgMusic");
 
-  setTimeout(() => {
-    intro.style.display = 'none';
-    content.classList.remove('hidden');
-  }, 1500);
-});
+  // Theme system
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  document.body.classList.add(savedTheme);
 
-// SETTINGS MENU
-const settingsBtn = document.getElementById('settings-btn');
-const settingsMenu = document.getElementById('settings-menu');
-const themeSelect = document.getElementById('theme-select');
-const multiTheme = document.getElementById('multi-theme');
-
-settingsBtn.addEventListener('click', () => {
-  settingsMenu.classList.toggle('hidden');
-});
-
-themeSelect.addEventListener('change', applyTheme);
-multiTheme.addEventListener('change', saveSettings);
-
-function applyTheme() {
-  const theme = themeSelect.value;
-  document.body.dataset.theme = theme;
-  localStorage.setItem('theme', theme);
-}
-
-function saveSettings() {
-  localStorage.setItem('multiTheme', multiTheme.checked);
-}
-
-function loadSettings() {
-  const savedTheme = localStorage.getItem('theme') || 'cyan';
-  const savedMulti = localStorage.getItem('multiTheme') === 'true';
-
-  themeSelect.value = savedTheme;
-  multiTheme.checked = savedMulti;
-
-  document.body.dataset.theme = savedTheme;
-}
-
-loadSettings();
-
-// PARTICLES
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-let particles = [];
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-for (let i = 0; i < 60; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2,
-    dx: (Math.random() - 0.5) * 0.5,
-    dy: (Math.random() - 0.5) * 0.5
-  });
-}
-
-function drawParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'rgba(0,255,255,0.6)';
-  for (const p of particles) {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fill();
-    p.x += p.dx;
-    p.y += p.dy;
-    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      const currentTheme = document.body.classList.contains("light") ? "light" : "dark";
+      localStorage.setItem("theme", currentTheme);
+    });
   }
-  requestAnimationFrame(drawParticles);
-}
-drawParticles();
+
+  // Old theme toggle
+  if (oldTheme) {
+    oldTheme.checked = localStorage.getItem("oldTheme") === "true";
+    oldTheme.addEventListener("change", () => {
+      localStorage.setItem("oldTheme", oldTheme.checked);
+      alert("Theme will change on reload!");
+    });
+  }
+
+  // Music system
+  if (bgMusic) {
+    const musicState = localStorage.getItem("musicEnabled") === "true";
+    const savedVolume = parseFloat(localStorage.getItem("musicVolume")) || 0.5;
+    bgMusic.volume = savedVolume;
+
+    if (musicState) bgMusic.play();
+
+    if (musicEnabled) {
+      musicEnabled.checked = musicState;
+      musicEnabled.addEventListener("change", () => {
+        if (musicEnabled.checked) {
+          bgMusic.play();
+          localStorage.setItem("musicEnabled", true);
+        } else {
+          bgMusic.pause();
+          localStorage.setItem("musicEnabled", false);
+        }
+      });
+    }
+  }
+
+  // Volume control
+  if (volumeControl) {
+    volumeControl.value = localStorage.getItem("musicVolume") || 0.5;
+    volumeControl.addEventListener("input", () => {
+      if (bgMusic) bgMusic.volume = volumeControl.value;
+      localStorage.setItem("musicVolume", volumeControl.value);
+    });
+  }
+
+  // Loading animation
+  if (loading && app) {
+    setTimeout(() => {
+      loading.classList.add("hidden");
+      app.classList.remove("hidden");
+    }, 1200);
+  }
+});
